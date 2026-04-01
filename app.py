@@ -10,9 +10,9 @@ import os
 # ─────────────────────────────────────────────────────────────────────────────
 # CHEMIN VERS VOTRE FICHIER EXCEL
 # ─────────────────────────────────────────────────────────────────────────────
-EXCEL_PATH = r"\data\Professional_Trading_Journal.xlsx"
-CSV_PATH   = r"\data\historicalportfoliovalues.csv"
-EXPORT_PATH = r"\data\assetlist march.csv"
+EXCEL_PATH = r"data/Professional_Trading_Journal.xlsx"
+CSV_PATH   = r"data/historicalportfoliovalues.csv"
+EXPORT_PATH = r"data/assetlist march.csv"
 # ─────────────────────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Trading Journal",
@@ -715,9 +715,9 @@ with tabs[2]:
 with tabs[3]:
     @st.cache_data
     def load_ls_data():
-        df_returns = pd.read_excel(r"\data\DATA NDQ.xlsx", sheet_name="RETURNS")
-        df_pricetobook = pd.read_excel(r"\data\DATA NDQ.xlsx", sheet_name="PRICE TO BOOK")
-        df_benchmarksreturn = pd.read_excel(r"\data\DATA NDQ.xlsx", sheet_name="BENCHMARK RETURNS")
+        df_returns = pd.read_excel(r"data/DATA NDQ.xlsx", sheet_name="RETURNS")
+        df_pricetobook = pd.read_excel(r"data/DATA NDQ.xlsx", sheet_name="PRICE TO BOOK")
+        df_benchmarksreturn = pd.read_excel(r"data/DATA NDQ.xlsx", sheet_name="BENCHMARK RETURNS")
         for df, col in [(df_returns, "Unnamed: 0"), (df_pricetobook, "Unnamed: 0"), (df_benchmarksreturn, "Unnamed: 0")]:
             df.rename(columns={col: "Month_End"}, inplace=True)
             df["Month_End"] = pd.to_datetime(df["Month_End"], dayfirst=True)
