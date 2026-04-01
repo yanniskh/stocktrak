@@ -539,7 +539,11 @@ with tabs[1]:
         elif str(val).strip().upper() == "SELL": return "color: #ff4444; font-weight: bold"
         return ""
 
-    styled = disp_tj.style.applymap(highlight_direction, subset=["Direction"])
+    if hasattr(disp_tj.style, 'map'):
+        styled = disp_tj.style.map(highlight_direction, subset=["Direction"])
+    else:
+        styled = disp_tj.style.applymap(highlight_direction, subset=["Direction"])
+    
     st.dataframe(styled, use_container_width=True, hide_index=True, height=480)
 
 # ═══════════════════════════════════════════════════════════════════════════
